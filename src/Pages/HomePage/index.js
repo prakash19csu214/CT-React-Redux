@@ -1,34 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.css";
 import { Jumbotron } from "reactstrap";
-// import Link  from 'react-router-dom/Link';
-import {images} from "../../Assets/Images";
 import Heading from "../../Components/Heading";
-import { ShopexCard } from "../../Components/ShopexCard";
-import FeaturedProducts from "../../Components/FeaturedProductsCard";
 import LatestProducts from "../../Components/LatestProducts";
-import TrendingProducts from "../../Components/TrendingProductsCard";
-import TopCategory from "../../Components/TopCategoryCard";
 import { Button } from "../../Components/Button";
-import BlogsCard from "../../Components/BlogsCard";
-import { useContext } from "react";
-import { GetProducts } from "../../Layouts/Main";
+import { Loading } from "../../Components/Loading";
 
-export default function Home() {
+export default function Home(props) {
 
-    const products = useContext(GetProducts);
-
+  const products = props.products.products.map((product) => {
     return (
-      <>
-        <Jumbotron>
-          <div className="row container">
-            <div className="col-sm-2">
-              <img src={images.JumboPic2} className="img-fluid h-jp2" />
-            </div>
+      <div  className="col-12 col-md-5 mt-5">
+        <LatestProducts product={product} key={product.id} />
+      </div>
+    );
+  }
+);
 
-            <div className="col-12 col-sm-7">
+if(props.products.isLoading){
+  return(
+    <div className="container">
+      <div className="row">
+        <Loading />
+      </div>
+    </div>
+  );
+}
+else if (props.products.errMess) {
+  return(
+    <div className="container">
+      <div className="row">
+        <h4>{props.errMess}</h4>
+      </div>
+    </div>
+  );
+}
+else
+    return (
+      <div>
+      <Jumbotron>
+          <div className="row container">
+
+            <div className="col-12 col-sm-12">
               <div className="row row-header">
-                <div className="col-12 col-sm-8 heading">
+                <div className="col-12 col-sm-12 heading">
                   <p style={{ color: "var(--primary-color)" }}>
                     Best Furniture For Your Castle....
                   </p>
@@ -43,21 +58,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="col-sm-3 container">
-              <img
-                src={images.JumboPic1}
-                className="img-fluid"
-                style={{ height: "450px" }}
-              />
-            </div>
           </div>
         </Jumbotron>
-
         <div className="sec-3 my-4 container">
           <div className="row justify-content-center d-flex">
             <Heading props="Latest Products" />
             <div className="row container d-flex justify-content-center my-5">
-            {products.latestProducts && products.latestProducts.slice(0,12).map(product => <LatestProducts product={product} key={product.id} />)}
+              {products}
             </div>
           </div>
         </div>
@@ -74,6 +81,6 @@ Our Newslater" />
             
           </div>
         </div>
-      </>
+      </div>
     );
 }

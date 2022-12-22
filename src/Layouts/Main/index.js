@@ -1,52 +1,60 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { Component } from "react";
 import Home from "../../Pages/HomePage";
+import { connect } from 'react-redux';
 import Header from "../Header";
 import Footer from "../Footer";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {NewArrivals, BestSeller, SpecialOffer, Featured} from '../../Components/HomeNested'
-import ShopGrid from "../../Pages/ShopGrid";
+import { fetchProducts } from "../../Redux/ActionCreators";
 
-const GetProducts = createContext();
+const mapStateToProps = state => {
+  return {
+    products: state.products
+  }
+}
 
-function Main() {
+const mapDispatchToProps = (dispatch) => ({
+  fetchProducts: () => {dispatch(fetchProducts())}
 
-  const [products, setProducts] = useState([]);
+});
 
-  const fetchData = () => {
+class Main extends Component{
 
-    const url = "http://localhost:5000/products"
-
-
-    return fetch(url)
-          .then((response) => response.json())
-          .then((data) => setProducts(data));
+  constructor(props){
+    super(props);
   }
 
-  useEffect(() => {
-    fetchData();
-  },[]);
+  componentDidMount() {
+    this.props.fetchProducts();
 
-  if (!products) return null;
+  }
+
+  
+  render() {
+
+    const HomePage = () => {
+      return(
+        <Home products={this.props.products} />
+      );
+    }
+
 
   return (
     <>
       <Header />
-      <GetProducts.Provider value={products}>
         <Switch>
-          <Route path="/home" component={Home}>
+          <Route path="/home" component={HomePage}>
             <Route path="arrivals" element={<NewArrivals />} />
             <Route path="bestSeller" element={<BestSeller />} />
             <Route path="featured" element={<Featured />} />
             <Route path="specialOffer" element={<SpecialOffer />} />
           </Route>
-          <Route path="/shopGrid" component={ShopGrid} />
           <Redirect to="/home" />
         </Switch>
-        </GetProducts.Provider>
         <Footer />
     </>
   )
 }
+}
 
-export default Main
-export {GetProducts}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
