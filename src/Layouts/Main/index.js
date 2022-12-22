@@ -34,7 +34,9 @@ class Main extends Component{
 
     const HomePage = () => {
       return(
-        <Home products={this.props.products} />
+        <Home products={this.props.products}
+        isLoading={this.props.products.isLoading}
+    errMess={this.props.products.errMess} />
       );
     }
 
