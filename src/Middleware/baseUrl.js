@@ -1,1 +1,1 @@
-export const baseUrl = 'http://localhost:5000/products';
+export const baseUrl = 'https://fakestoreapi.com/products';
