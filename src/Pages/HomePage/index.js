@@ -2,17 +2,15 @@ import React from "react";
 import "./index.css";
 import { Jumbotron } from "reactstrap";
 import Heading from "../../Components/Heading";
-import LatestProducts from "../../Components/LatestProducts";
 import { Button } from "../../Components/Button";
 import { Loading } from "../../Components/Loading";
+import ListCard from "../../Components/ListCard";
 
 export default function Home(props) {
 
   const products = props.products.products.map((product) => {
     return (
-      <div  className="col-12 col-md-5 mt-5">
-        <LatestProducts product={product} key={product.id} />
-      </div>
+        <ListCard product={product} key={product.id} />
     );
   }
 );
@@ -62,7 +60,7 @@ else
         </Jumbotron>
         <div className="sec-3 my-4 container">
           <div className="row justify-content-center d-flex">
-            <Heading props="Latest Products" />
+            <Heading props="Products Using Redux" />
             <div className="row container d-flex justify-content-center my-5">
               {products}
             </div>
