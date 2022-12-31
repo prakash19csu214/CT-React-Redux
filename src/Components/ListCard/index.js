@@ -16,7 +16,7 @@ function ListCard({ product }) {
       <div className="col-11 col-md-5 mt-5 ml-2">
           <div className="row text-center featured-head my-2">{product.title}</div>
           <div className="row text-center featured-para">
-            $ {product.price} &nbsp; &nbsp;
+            <b> $ {product.price} </b>&nbsp; &nbsp;
           </div>
           <div className="list-para row my-1">
             {product.description}

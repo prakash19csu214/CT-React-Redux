@@ -2,6 +2,7 @@ import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../Middleware/baseUrl';
 
 export const fetchProducts = () => (dispatch) => {
+    dispatch(productsLoading(true));
     return fetch(baseUrl)
         .then(response => {
             if (response.ok) {
@@ -22,6 +23,10 @@ export const fetchProducts = () => (dispatch) => {
         .then(products => dispatch(addProducts(products)))
         .catch(error => dispatch(productsFailed(error.message)));
 };
+
+export const productsLoading = () => ({
+    type: ActionTypes.PRODUCTS_LOADING
+});
 
 export const productsFailed = (errmess) => ({
     type: ActionTypes.PRODUCTS_FAILED,
