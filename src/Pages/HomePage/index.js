@@ -60,14 +60,14 @@ export default function Home(props) {
   return (
     <>
       <Jumbotron>
-        <div className="row container">
+        <div className="row container mt-5">
           <div className="col-12 col-sm-12">
             <div className="row row-header">
-              <div className="col-12 col-sm-12 heading">
+              <div className="col-12 col-sm-12 heading text-center text-lg-left">
                 <p style={{ color: "var(--primary-color)" }}>
                   Best Furniture For Your Castle....
                 </p>
-                <b>New Furniture Collection Trends in 2020</b>
+                <b>New Ecommerce Products in 2023</b>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna
                   in est adipiscing in phasellus non in justo.
