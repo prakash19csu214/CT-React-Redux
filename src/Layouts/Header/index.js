@@ -98,10 +98,13 @@ class Header extends Component {
                 </form>
               </Nav> */}
             </Collapse>
-            <button class="btn btn-outline-success my-2 my-sm-0 cart" type="cart">
+            <NavLink to="/cart">
+            <button class="btn btn-outline-success my-2 my-sm-0 cart" to="/cart" type="cart">
               <span className="cart-count">10</span>
               <span className="fa fa-lg fa-shopping-cart cart-btn"></span>
             </button>
+            </NavLink>
+            
           </div>
         </Navbar>
       </>

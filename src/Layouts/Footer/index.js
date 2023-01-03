@@ -1,7 +1,6 @@
 import React from "react";
 import './index.css'
 import { NavbarBrand, Nav } from "reactstrap";
-import Link from "react-router-dom/Link";
 
 function Footer() {
   return (
@@ -11,7 +10,7 @@ function Footer() {
         <div className="row justify-content-center">
           <div className="">
             <NavbarBrand className="mr-auto navbar-logo" href="/home">
-              <b>Hekto</b>
+              <b>Ecommerce</b>
             </NavbarBrand>
             <Nav className="ml-auto" navbar>
               <form class="form-inline my-2 my-lg-0">

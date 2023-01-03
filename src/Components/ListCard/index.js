@@ -26,7 +26,7 @@ function ListCard({ product }) {
             <span className="fa list-icon fa-heart-o"></span>
             <span className="fa list-icon fa-search-plus"></span>
           </div> */}
-        <div className="btnn2 mt-2">
+        <div className="row mt-2">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
             <span className="btnn2-text">Add To Card</span>
           </button>

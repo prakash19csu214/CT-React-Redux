@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {NewArrivals, BestSeller, SpecialOffer, Featured} from '../../Components/HomeNested'
 import { fetchProducts } from "../../Redux/ActionCreators";
+import Cart from "../../Pages/Cart";
 
 const mapStateToProps = state => {
   return {
@@ -20,9 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 class Main extends Component{
 
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
   componentDidMount() {
     this.props.fetchProducts();
@@ -51,6 +52,7 @@ class Main extends Component{
             <Route path="featured" element={<Featured />} />
             <Route path="specialOffer" element={<SpecialOffer />} />
           </Route>
+          <Route path="/cart" component={Cart} />
           <Redirect to="/home" />
         </Switch>
         <Footer />
