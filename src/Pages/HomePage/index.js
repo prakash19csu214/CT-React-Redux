@@ -63,7 +63,7 @@ export default function Home(props) {
         <div className="row container mt-5">
           <div className="col-12 col-sm-12">
             <div className="row row-header">
-              <div className="col-12 col-sm-12 heading text-center text-lg-left">
+              <div className="col-12 col-sm-12 heading text-center text-lg-left ml-lg-5">
                 <p style={{ color: "var(--primary-color)" }}>
                   Best Furniture For Your Castle....
                 </p>
@@ -83,7 +83,7 @@ export default function Home(props) {
       <div className="sec-3 my-4 container">
             <div className="row justify-content-center d-flex">
               <div className="row container d-flex justify-content-center">
-              <Heading props="Products Using Redux" />
+              <Heading props="Ecommerce Products" />
               <ProductsRender />
               </div>
             </div>
