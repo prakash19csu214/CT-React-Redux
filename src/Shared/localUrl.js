@@ -1,0 +1,1 @@
+export const localUrl = 'https://localhost.com:5000/cart';

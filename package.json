@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "json-server --watch src/Middleware/products.json --port 5000"
+    "server": "json-server --watch src/Shared/cart.json --port 5000"
   },
   "eslintConfig": {
     "extends": [
